@@ -1,115 +1,117 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:belajar_flutter1/components/custom_textfield.dart';
+import 'package:belajar_flutter1/components/custom_button.dart';
+import '../controllers/kalkulator_controller.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: KalkulatorPage(),
-    ),
-  );
-}
+class KalkulatorPage extends StatelessWidget {
+  KalkulatorPage({super.key});
 
-class KalkulatorPage extends StatefulWidget {
-  const KalkulatorPage({super.key});
+  final controller = Get.put(KalkulatorController());
 
-  @override
-  State<KalkulatorPage> createState() => _KalkulatorPageState();
-}
-
-class _KalkulatorPageState extends State<KalkulatorPage> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController txtangka1 = TextEditingController();
+    TextEditingController txtangka2 = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("My Kalkulator Page"),
       ),
-
       body: Column(
         children: [
-
-          // ANGKA 1
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: TextField(
-              keyboardType: TextInputType.number,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              decoration: const InputDecoration(
-                hintText: "Masukkan Angka 1",
-                border: OutlineInputBorder(),
-              ),
-            ),
+          CustomTextfield(
+            myHint: "Masukkan Angka 1",
+            txtController: txtangka1,
           ),
 
-          // ANGKA 2
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: TextField(
-              keyboardType: TextInputType.number,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              decoration: const InputDecoration(
-                hintText: "Masukkan Angka 2",
-                border: OutlineInputBorder(),
-              ),
-            ),
+          CustomTextfield(
+            myHint: "Masukkan Angka 2",
+            txtController: txtangka2,
           ),
 
-          // TOMBOL OPERASI
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          CustomButton(
+            text: "Tambah",
+            onPressed: () {
+              if (txtangka1.text.isEmpty || txtangka2.text.isEmpty) {
+                Get.snackbar(
+                  "Peringatan",
+                  "Angka 1 dan Angka 2 harus diisi",
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+                return;
+              }
 
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text("+"),
-              ),
-
-              const SizedBox(width: 10),
-
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text("-"),
-              ),
-
-              const SizedBox(width: 10),
-
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text("×"),
-              ),
-
-              const SizedBox(width: 10),
-
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text("÷"),
-              ),
-            ],
+              controller.tambah(
+                double.parse(txtangka1.text),
+                double.parse(txtangka2.text),
+              );
+            },
           ),
 
-          const SizedBox(height: 30),
+          CustomButton(
+            text: "Kurang",
+            onPressed: () {
+              if (txtangka1.text.isEmpty || txtangka2.text.isEmpty) {
+                Get.snackbar(
+                  "Peringatan",
+                  "Angka 1 dan Angka 2 harus diisi",
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+                return;
+              }
 
-          // HASIL
-          const Text(
-            "Hasil : ",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+              controller.kurang(
+                double.parse(txtangka1.text),
+                double.parse(txtangka2.text),
+              );
+            },
+          ),
+
+          CustomButton(
+            text: "Kali",
+            onPressed: () {
+              if (txtangka1.text.isEmpty || txtangka2.text.isEmpty) {
+                Get.snackbar(
+                  "Peringatan",
+                  "Angka 1 dan Angka 2 harus diisi",
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+                return;
+              }
+
+              controller.kali(
+                double.parse(txtangka1.text),
+                double.parse(txtangka2.text),
+              );
+            },
+          ),
+
+          CustomButton(
+            text: "Bagi",
+            onPressed: () {
+              if (txtangka1.text.isEmpty || txtangka2.text.isEmpty) {
+                Get.snackbar(
+                  "Peringatan",
+                  "Angka 1 dan Angka 2 harus diisi",
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+                return;
+              }
+
+              controller.bagi(
+                double.parse(txtangka1.text),
+                double.parse(txtangka2.text),
+              );
+            },
           ),
 
           const SizedBox(height: 20),
 
-          // RESET
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text(
-              "RESET",
-              style: TextStyle(
+          Obx(
+            () => Text(
+              "Hasil : ${controller.hasilHitung}",
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
