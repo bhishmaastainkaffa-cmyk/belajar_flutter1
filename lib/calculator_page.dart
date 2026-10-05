@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:belajar_flutter1/components/custom_textfield.dart';
 import 'package:belajar_flutter1/components/custom_button.dart';
-import '../controllers/kalkulator_controller.dart';
+import 'controllers/kalkulator_controller.dart';
 
 class KalkulatorPage extends StatelessWidget {
   KalkulatorPage({super.key});
