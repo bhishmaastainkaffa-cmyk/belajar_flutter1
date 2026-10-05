@@ -23,7 +23,11 @@ class RegistrationPage extends StatelessWidget {
           RegistrationTextfield(txtController: txtNama, myHint: "input name"),
           RegistrationTextfield(txtController: txtAgama, myHint: "input agama"),
           RegistrationTextfield(txtController: txtEmail, myHint: "input email"),
-          RegistrationTextfield(txtController: txtNoWa, myHint: "input no WhatsApp"),
+          RegistrationTextfield(
+            txtController: txtNoWa,
+            myHint: "input no WhatsApp",
+            onlyNumber: true,
+          ),
           DropdownButtonFormField<String>(
             value: jenisKelamin.value.isEmpty ? null : jenisKelamin.value,
             decoration: InputDecoration(
