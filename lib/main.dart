@@ -1,6 +1,4 @@
-import 'package:belajar_flutter1/calculator_page.dart';
-import 'package:belajar_flutter1/login_page.dart';
-import 'package:belajar_flutter1/pages/registration_page.dart';
+import 'package:belajar_flutter1/pages/list_makanan_page.dart';
 import 'package:belajar_flutter1/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       getPages: Routes.myPages,
+      initialRoute: Routes.list_makanan,
 
       theme: ThemeData(
         // This is the theme of your application.
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
         ),
       ),
-      home: RegistrationPage(),
+      home: ListMakananPage(),
     );
   }
 }
