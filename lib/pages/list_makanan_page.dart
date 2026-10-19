@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:belajar_flutter1/controllers/list_makanan_controller.dart';
-import 'package:belajar_flutter1/pages/detail_makanan_page.dart';
 import 'package:belajar_flutter1/components/food_menu_card.dart';
+import 'package:belajar_flutter1/routes.dart';
 
 class ListMakananPage extends StatelessWidget {
   ListMakananPage({super.key});
@@ -23,14 +22,16 @@ class ListMakananPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final makanan = controller.dataMakanan[index];
 
-          return FoodMenuCard(
-            makanan: makanan,
-            onTap: () {
-              Get.to(
-                () => DetailMakananPage(),
+          return InkWell(
+           onTap: () {
+              Get.toNamed(
+                Routes.detail_makanan,
                 arguments: makanan,
               );
             },
+            child: FoodMenuCard(
+              makanan: makanan,
+            ),
           );
         },
       ),

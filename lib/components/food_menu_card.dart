@@ -4,12 +4,10 @@ import 'package:belajar_flutter1/models/makanan_model.dart';
 
 class FoodMenuCard extends StatelessWidget {
   final MakananModel makanan;
-  final VoidCallback onTap;
 
   const FoodMenuCard({
     super.key,
     required this.makanan,
-    required this.onTap,
   });
 
   @override
@@ -34,7 +32,6 @@ class FoodMenuCard extends StatelessWidget {
         title: Text(makanan.namaMakanan),
         subtitle: Text('Rp ${makanan.harga}'),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
       ),
     );
   }

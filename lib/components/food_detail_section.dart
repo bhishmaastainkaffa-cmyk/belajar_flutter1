@@ -12,25 +12,30 @@ class FoodDetailSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Deskripsi',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+    return Card(
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Deskripsi',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          makanan.deskripsi,
-          style: const TextStyle(
-            fontSize: 14,
-            height: 1.5,
+          const SizedBox(height: 8),
+          Text(
+            makanan.deskripsi,
+            style: const TextStyle(
+              fontSize: 14,
+              height: 1.5,
+            ),
           ),
-        ),
-      ],
-    );
-  }
+        ],
+      ),
+    ),
+  );
+ }
 }

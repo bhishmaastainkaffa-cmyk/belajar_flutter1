@@ -1,10 +1,8 @@
-
 import 'package:belajar_flutter1/models/makanan_model.dart';
+import 'package:belajar_flutter1/routes.dart';
 import 'package:get/get.dart';
 
 class ListMakananController extends GetxController {
-  // data makanan berupa List, masih hardcoded
-
   List<MakananModel> dataMakanan = [
     MakananModel(
       namaMakanan: "Wagyu Steak",
@@ -57,4 +55,11 @@ class ListMakananController extends GetxController {
           "dan saus gurih untuk pengalaman makan yang elegan.",
     ),
   ];
+
+  void bukaDetail(MakananModel makanan) {
+    Get.toNamed(
+      Routes.detail_makanan,
+      arguments: makanan,
+    );
+  }
 }
