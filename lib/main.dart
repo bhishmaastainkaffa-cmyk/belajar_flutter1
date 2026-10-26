@@ -1,4 +1,4 @@
-import 'package:belajar_flutter1/pages/list_makanan_page.dart';
+import 'package:belajar_flutter1/pages/main_menu_page.dart';
 import 'package:belajar_flutter1/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       getPages: Routes.myPages,
-      initialRoute: Routes.list_makanan,
+      initialRoute: Routes.main_menu,
 
       theme: ThemeData(
         // This is the theme of your application.
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
         ),
       ),
-      home: ListMakananPage(),
+      home: MainMenuPage(),
     );
   }
 }
