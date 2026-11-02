@@ -1,4 +1,4 @@
-import 'package:belajar_flutter1/pages/main_menu_page.dart';
+import 'package:belajar_flutter1/login_page.dart';
 import 'package:belajar_flutter1/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       getPages: Routes.myPages,
-      initialRoute: Routes.main_menu,
 
       theme: ThemeData(
         // This is the theme of your application.
@@ -32,14 +31,14 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // state is not lost during the reload. To reset the state, use hot
         // restart instead.
-        //
+        //R
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
         ),
       ),
-      home: MainMenuPage(),
+      home: LoginPage(),
     );
   }
 }
